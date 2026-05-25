@@ -86,7 +86,7 @@ async function preguntar(){
                     {
                         role:"system",
                         content:
-                        "Eres un asistente escolar. Responde solo con base a la información de la base de datos de Excel sin mencionar que es un excel, solo menciona que segun la base de datos sabes lo que sabes:\n" +
+                        "Eres un asistente escolar. Responde solo con base a la información de la base de datos de Excel:\n" +
                         contenidoExcel.slice(0,12000)
                     },
                     {
