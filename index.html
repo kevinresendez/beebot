@@ -1,51 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeeBot AI</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
 <div class="chat-container">
 
     <div class="header">
-
         <h1>🐝 BeeBot AI</h1>
-
-        <p>
-            Asistente Escolar Inteligente
-        </p>
-
+        <p>Asistente Escolar Inteligente</p>
     </div>
 
     <div class="status" id="status">
-
         ⏳ Cargando Excel...
-
     </div>
 
-    <div
-        class="chat-box"
-        id="chatBox"
-    >
-
+    <div class="chat-box" id="chatBox">
         <div class="message bot">
-
             Hola 👋<br><br>
-
             Soy BeeBot.<br>
-
             Esperando datos del Excel...
-
         </div>
-
     </div>
 
     <div class="input-area">
-
-        <textarea
-            id="prompt"
-            placeholder="Escribe tu pregunta..."
-        ></textarea>
-
-        <button onclick="preguntar()">
-
-            ➤
-
-        </button>
-
+        <textarea id="prompt" placeholder="Escribe tu pregunta..."></textarea>
+        <button onclick="preguntar()">➤</button>
     </div>
 
 </div>
+
+
+
+<!-- Tu script -->
+<script src="script.js"></script>
+
+</body>
+</html>
