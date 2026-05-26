@@ -122,3 +122,117 @@ async function preguntar(){
 }
 
 cargarExcel();
+// =====================================
+// CAMBIAR ENTRE PESTAÑAS
+// =====================================
+
+function mostrarPagina(pagina){
+
+    document
+    .querySelectorAll(".page")
+    .forEach(p => {
+
+        p.classList.remove("active");
+
+    });
+
+    if(pagina === "ia"){
+
+        document
+        .getElementById("iaPage")
+        .classList.add("active");
+    }
+
+    else{
+
+        document
+        .getElementById("testPage")
+        .classList.add("active");
+    }
+}
+
+// =====================================
+// TEST VOCACIONAL
+// =====================================
+
+function calcularResultado(){
+
+    let respuestas = {
+
+        A:0,
+        B:0,
+        C:0,
+        D:0
+    };
+
+    for(let i=1;i<=6;i++){
+
+        let seleccion = document.querySelector(
+            `input[name="q${i}"]:checked`
+        );
+
+        if(seleccion){
+
+            respuestas[seleccion.value]++;
+        }
+    }
+
+    let mayor = "A";
+
+    for(let letra in respuestas){
+
+        if(respuestas[letra] > respuestas[mayor]){
+
+            mayor = letra;
+        }
+    }
+
+    const resultado =
+    document.getElementById("resultado");
+
+    if(mayor === "A"){
+
+        resultado.innerHTML = `
+        <h2>💻 Tecnología Digital</h2>
+        <p>
+        Perfil relacionado con:
+        Inteligencia Artificial,
+        Programación y Ciberseguridad.
+        </p>
+        `;
+    }
+
+    else if(mayor === "B"){
+
+        resultado.innerHTML = `
+        <h2>⚙ Mecánica e Industria</h2>
+        <p>
+        Perfil orientado a:
+        Mecánica, Electricidad
+        y Sistemas Industriales.
+        </p>
+        `;
+    }
+
+    else if(mayor === "C"){
+
+        resultado.innerHTML = `
+        <h2>👶 Puericultura</h2>
+        <p>
+        Tienes vocación para el
+        cuidado y educación infantil.
+        </p>
+        `;
+    }
+
+    else{
+
+        resultado.innerHTML = `
+        <h2>👗 Industria del Vestido</h2>
+        <p>
+        Perfil creativo orientado
+        a diseño y moda.
+        </p>
+        `;
+    }
+}
