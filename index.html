@@ -1,68 +1,317 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BeeBot AI</title>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- ICONO -->
-    <link rel="icon" type="image/png" href="./IA.png?v=2">
+<title>BeeBot AI + Test Vocacional</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="icon" type="image/png" href="./IA.png?v=2">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
 
-<div class="chat-container">
+<div class="main-container">
 
-    <div class="header">
-        <h1>🐝 BeeBot AI</h1>
-        <p>Asistente Escolar Inteligente</p>
+    <!-- MENU -->
+
+    <div class="sidebar">
+
+        <h2>🐝 BeeBot</h2>
+
+        <button onclick="mostrarPagina('ia')">
+            🤖 BeeBot AI
+        </button>
+
+        <button onclick="mostrarPagina('test')">
+            🎓 Test Vocacional
+        </button>
+
     </div>
 
-    <div class="status" id="status">
-        ⏳ Cargando Base de Datos...
+    <!-- CONTENIDO -->
+
+    <div class="content">
+
+        <!-- IA -->
+
+        <div id="iaPage" class="page active">
+
+            <div class="chat-container">
+
+                <div class="header">
+                    <h1>🐝 BeeBot AI</h1>
+                    <p>Asistente Escolar Inteligente</p>
+                </div>
+
+                <div class="status" id="status">
+                    ⏳ Cargando Base de Datos...
+                </div>
+
+                <div class="chat-box" id="chatBox">
+
+                    <div class="message bot">
+
+                        Hola 👋<br><br>
+
+                        Soy BeeBot AI 🐝🤖<br>
+                        Puedo ayudarte únicamente con información escolar.<br><br>
+
+                        Puedes preguntarme sobre:<br><br>
+
+                        📄 Trámite o servicio<br>
+                        💰 Precio o costo<br>
+                        👤 Alumno<br>
+                        🏢 Lugar o edificio<br>
+                        🎓 Carrera o programa<br>
+                        🕒 Turno o modalidad<br>
+                        👨‍🏫 Profesor<br>
+                        ⭐ Créditos<br>
+                        🚪 Aula o laboratorio<br>
+                        📅 Horario
+
+                    </div>
+
+                </div>
+
+                <div class="input-area">
+
+                    <textarea
+                    id="prompt"
+                    placeholder="Escribe tu pregunta..."></textarea>
+
+                    <button onclick="preguntar()">
+                        ➤
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- TEST -->
+
+        <div id="testPage" class="page">
+
+            <div class="test-container">
+
+                <div class="test-header">
+
+                    <h1>
+                        🎓 Test Vocacional
+                    </h1>
+
+                    <p>
+                        Descubre qué carrera técnica
+                        se adapta mejor a ti.
+                    </p>
+
+                </div>
+
+                <!-- PREGUNTA 1 -->
+
+                <div class="question-card">
+
+                    <h3>
+                        1. ¿Qué tipo de actividades te gustan más?
+                    </h3>
+
+                    <label>
+                        <input type="radio" name="q1" value="A">
+                        Resolver problemas lógicos
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q1" value="B">
+                        Reparar máquinas
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q1" value="C">
+                        Cuidar niños
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q1" value="D">
+                        Diseñar ropa
+                    </label>
+
+                </div>
+
+                <!-- PREGUNTA 2 -->
+
+                <div class="question-card">
+
+                    <h3>
+                        2. ¿Qué tema te interesa más?
+                    </h3>
+
+                    <label>
+                        <input type="radio" name="q2" value="A">
+                        Inteligencia Artificial
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q2" value="B">
+                        Motores
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q2" value="C">
+                        Desarrollo infantil
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q2" value="D">
+                        Moda
+                    </label>
+
+                </div>
+
+                <!-- PREGUNTA 3 -->
+
+                <div class="question-card">
+
+                    <h3>
+                        3. ¿Qué haces en tu tiempo libre?
+                    </h3>
+
+                    <label>
+                        <input type="radio" name="q3" value="A">
+                        Tecnología y videojuegos
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q3" value="B">
+                        Reparaciones
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q3" value="C">
+                        Ayudar niños
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q3" value="D">
+                        Dibujar
+                    </label>
+
+                </div>
+
+                <!-- PREGUNTA 4 -->
+
+                <div class="question-card">
+
+                    <h3>
+                        4. ¿En qué área te sientes mejor?
+                    </h3>
+
+                    <label>
+                        <input type="radio" name="q4" value="A">
+                        Matemáticas
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q4" value="B">
+                        Herramientas
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q4" value="C">
+                        Empatía
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q4" value="D">
+                        Diseño
+                    </label>
+
+                </div>
+
+                <!-- PREGUNTA 5 -->
+
+                <div class="question-card">
+
+                    <h3>
+                        5. ¿Qué tarea harías feliz?
+                    </h3>
+
+                    <label>
+                        <input type="radio" name="q5" value="A">
+                        Programar
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q5" value="B">
+                        Reparar motores
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q5" value="C">
+                        Actividades infantiles
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q5" value="D">
+                        Diseñar ropa
+                    </label>
+
+                </div>
+
+                <!-- PREGUNTA 6 -->
+
+                <div class="question-card">
+
+                    <h3>
+                        6. ¿Cómo prefieres trabajar?
+                    </h3>
+
+                    <label>
+                        <input type="radio" name="q6" value="A">
+                        Computadora
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q6" value="B">
+                        Herramientas
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q6" value="C">
+                        Niños
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q6" value="D">
+                        Arte
+                    </label>
+
+                </div>
+
+                <button class="result-btn" onclick="calcularResultado()">
+                    Ver Resultado
+                </button>
+
+                <div id="resultado"></div>
+
+            </div>
+
+        </div>
+
     </div>
 
-    <div class="chat-box" id="chatBox">
-        <div class="message bot">
-    Hola 👋<br><br>
-
-    Soy BeeBot AI 🐝🤖<br>
-    Puedo ayudarte únicamente con información de la base de datos escolar.<br><br>
-
-    Puedes preguntarme sobre:<br><br>
-
-    📄 Trámite o servicio<br>
-    💰 Precio o costo<br>
-    👤 Alumno<br>
-    🏢 Lugar o edificio<br>
-    🎓 Carrera o programa<br>
-    🕒 Turno o modalidad<br>
-    👨‍🏫 Profesor<br>
-    ⭐ Créditos<br>
-    🚪 Aula o laboratorio<br>
-    📅 Horario<br><br>
-
-    Ejemplos:<br>
-    “¿Cuánto cuesta el certificado de estudio?”<br>
-    “¿Dónde se imparte Programación?”<br>
-    “¿Quién es el profesor?”<br>
-    “¿Cuál es el horario?”<br><br>
-
-    ⚠️ No respondo preguntas fuera de la información cargada.
 </div>
-    </div>
 
-    <div class="input-area">
-        <textarea id="prompt" placeholder="Escribe tu pregunta..."></textarea>
-        <button onclick="preguntar()">➤</button>
-    </div>
-
-</div>
-
-<!-- JS -->
 <script src="script.js"></script>
 
 </body>
