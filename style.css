@@ -327,3 +327,229 @@ button{
 
     line-height:1.7;
 }
+/* ======================================
+   RESPONSIVE TABLET
+====================================== */
+
+@media(max-width:1000px){
+
+    .main-container{
+
+        flex-direction:column;
+    }
+
+    .sidebar{
+
+        width:100%;
+
+        flex-direction:row;
+
+        justify-content:center;
+
+        align-items:center;
+
+        padding:15px;
+
+        gap:15px;
+    }
+
+    .sidebar h2{
+
+        display:none;
+    }
+
+    .sidebar button{
+
+        width:auto;
+
+        padding:14px 20px;
+
+        font-size:15px;
+    }
+
+    .content{
+
+        height:calc(100vh - 90px);
+    }
+}
+
+/* ======================================
+   RESPONSIVE CELULAR
+====================================== */
+
+@media(max-width:700px){
+
+    body{
+
+        overflow:hidden;
+    }
+
+    .chat-container{
+
+        width:100%;
+
+        height:100vh;
+
+        border-radius:0;
+    }
+
+    .header{
+
+        padding:18px;
+    }
+
+    .header h1{
+
+        font-size:24px;
+    }
+
+    .header p{
+
+        font-size:14px;
+    }
+
+    .status{
+
+        font-size:12px;
+
+        padding:10px;
+    }
+
+    .chat-box{
+
+        padding:15px;
+    }
+
+    .message{
+
+        max-width:100%;
+
+        font-size:14px;
+
+        padding:15px;
+    }
+
+    .input-area{
+
+        padding:12px;
+
+        gap:10px;
+    }
+
+    textarea{
+
+        height:55px;
+
+        font-size:14px;
+    }
+
+    button{
+
+        width:60px;
+
+        font-size:18px;
+    }
+
+    /* SIDEBAR */
+
+    .sidebar{
+
+        flex-direction:column;
+
+        width:100%;
+
+        padding:15px;
+    }
+
+    .sidebar button{
+
+        width:100%;
+    }
+
+    /* TEST */
+
+    .test-container{
+
+        padding:15px;
+    }
+
+    .test-header{
+
+        padding:20px;
+    }
+
+    .test-header h1{
+
+        font-size:28px;
+    }
+
+    .test-header p{
+
+        font-size:14px;
+    }
+
+    .question-card{
+
+        padding:18px;
+    }
+
+    .question-card h3{
+
+        font-size:18px;
+
+        line-height:1.5;
+    }
+
+    .question-card label{
+
+        font-size:14px;
+
+        padding:14px;
+    }
+
+    .result-btn{
+
+        font-size:16px;
+
+        padding:15px;
+    }
+
+    #resultado{
+
+        font-size:16px;
+
+        padding:20px;
+    }
+}
+
+/* ======================================
+   CELULARES PEQUEÑOS
+====================================== */
+
+@media(max-width:480px){
+
+    .header h1{
+
+        font-size:20px;
+    }
+
+    .message{
+
+        font-size:13px;
+    }
+
+    textarea{
+
+        font-size:13px;
+    }
+
+    .question-card h3{
+
+        font-size:16px;
+    }
+
+    .question-card label{
+
+        font-size:13px;
+    }
+}
