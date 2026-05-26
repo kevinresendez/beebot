@@ -106,3 +106,224 @@ button{
     font-size:22px;
     cursor:pointer;
 }
+
+/* =======================================
+   LAYOUT GENERAL
+======================================= */
+
+.main-container{
+
+    display:flex;
+
+    width:100%;
+
+    height:100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+
+    width:260px;
+
+    background:#202123;
+
+    padding:30px 20px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+    border-right:1px solid #333;
+}
+
+.sidebar h2{
+
+    color:#19c37d;
+
+    text-align:center;
+
+    margin-bottom:20px;
+}
+
+.sidebar button{
+
+    width:100%;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#2d2f39;
+
+    color:white;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.sidebar button:hover{
+
+    background:#19c37d;
+}
+
+/* CONTENIDO */
+
+.content{
+
+    flex:1;
+
+    overflow:hidden;
+}
+
+.page{
+
+    display:none;
+
+    width:100%;
+
+    height:100%;
+}
+
+.page.active{
+
+    display:block;
+}
+
+/* TEST */
+
+.test-container{
+
+    height:100vh;
+
+    overflow-y:auto;
+
+    padding:30px;
+
+    background:#343541;
+}
+
+.test-header{
+
+    background:#202123;
+
+    padding:30px;
+
+    border-radius:20px;
+
+    margin-bottom:25px;
+
+    text-align:center;
+}
+
+.test-header h1{
+
+    color:#19c37d;
+
+    font-size:40px;
+
+    margin-bottom:10px;
+}
+
+.test-header p{
+
+    color:#bbb;
+
+    font-size:18px;
+}
+
+/* TARJETAS */
+
+.question-card{
+
+    background:#444654;
+
+    padding:25px;
+
+    border-radius:18px;
+
+    margin-bottom:20px;
+}
+
+.question-card h3{
+
+    margin-bottom:20px;
+
+    font-size:22px;
+}
+
+.question-card label{
+
+    display:block;
+
+    background:#2d2f39;
+
+    padding:16px;
+
+    border-radius:12px;
+
+    margin-bottom:12px;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.question-card label:hover{
+
+    background:#3c3f4a;
+}
+
+.question-card input{
+
+    margin-right:12px;
+
+    accent-color:#19c37d;
+}
+
+/* BOTON RESULTADO */
+
+.result-btn{
+
+    width:100%;
+
+    padding:18px;
+
+    background:#19c37d;
+
+    border:none;
+
+    border-radius:14px;
+
+    color:white;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+    margin-top:10px;
+}
+
+/* RESULTADO */
+
+#resultado{
+
+    margin-top:25px;
+
+    background:#202123;
+
+    padding:30px;
+
+    border-radius:18px;
+
+    font-size:20px;
+
+    line-height:1.7;
+}
