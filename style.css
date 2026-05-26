@@ -1,3 +1,16 @@
+html{
+
+    height:100%;
+
+    overflow:hidden;
+}
+
+body{
+
+    min-height:100dvh;
+
+    overflow:hidden;
+}
 *{
     margin:0;
     padding:0;
@@ -551,5 +564,187 @@ button{
     .question-card label{
 
         font-size:13px;
+    }
+}
+
+/* =====================================
+   FIX IOS + SAFARI
+===================================== */
+
+.main-container{
+
+    width:100%;
+
+    height:100dvh;
+
+    overflow:hidden;
+}
+
+.content{
+
+    flex:1;
+
+    height:100dvh;
+
+    overflow:hidden;
+}
+
+.page{
+
+    width:100%;
+
+    height:100dvh;
+
+    overflow-y:auto;
+
+    -webkit-overflow-scrolling:touch;
+}
+
+/* CHAT */
+
+.chat-container{
+
+    width:100%;
+
+    height:100dvh;
+
+    display:flex;
+
+    flex-direction:column;
+}
+
+.chat-box{
+
+    flex:1;
+
+    overflow-y:auto;
+
+    -webkit-overflow-scrolling:touch;
+}
+
+/* TEST */
+
+.test-container{
+
+    width:100%;
+
+    height:100dvh;
+
+    overflow-y:auto;
+
+    -webkit-overflow-scrolling:touch;
+}
+
+/* INPUT IOS */
+
+textarea,
+input,
+button{
+
+    font-size:16px;
+}
+
+/* SAFARI FIX */
+
+input,
+textarea,
+button{
+
+    border-radius:0;
+}
+
+/* IPHONE MENU FIX */
+
+.sidebar{
+
+    z-index:999;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    .main-container{
+
+        flex-direction:column;
+    }
+
+    .sidebar{
+
+        width:100%;
+
+        flex-direction:row;
+
+        justify-content:space-around;
+
+        align-items:center;
+
+        padding:10px;
+
+        gap:10px;
+
+        position:sticky;
+
+        top:0;
+    }
+
+    .sidebar h2{
+
+        display:none;
+    }
+
+    .sidebar button{
+
+        flex:1;
+
+        font-size:14px;
+
+        padding:14px 10px;
+    }
+
+    .content{
+
+        flex:1;
+
+        overflow:hidden;
+    }
+
+    .chat-container{
+
+        border-radius:0;
+    }
+
+    .test-container{
+
+        padding:15px;
+    }
+
+    .question-card{
+
+        padding:18px;
+    }
+
+    .question-card h3{
+
+        font-size:17px;
+
+        line-height:1.5;
+    }
+
+    .question-card label{
+
+        font-size:14px;
+
+        line-height:1.5;
+    }
+
+    .header h1{
+
+        font-size:22px;
+    }
+
+    .test-header h1{
+
+        font-size:24px;
     }
 }
