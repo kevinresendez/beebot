@@ -1,16 +1,3 @@
-html{
-
-    height:100%;
-
-    overflow:hidden;
-}
-
-body{
-
-    min-height:100dvh;
-
-    overflow:hidden;
-}
 *{
     margin:0;
     padding:0;
@@ -18,51 +5,189 @@ body{
     font-family:"Segoe UI", sans-serif;
 }
 
+html{
+    height:100%;
+    overflow:hidden;
+}
+
 body{
+
     background:#343541;
     color:white;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+
+    min-height:100dvh;
+
+    overflow:hidden;
 }
+
+/* =========================================
+   CONTENEDOR PRINCIPAL
+========================================= */
+
+.main-container{
+
+    display:flex;
+
+    width:100%;
+
+    height:100dvh;
+
+    overflow:hidden;
+}
+
+/* =========================================
+   SIDEBAR
+========================================= */
+
+.sidebar{
+
+    width:260px;
+
+    background:#202123;
+
+    padding:25px 20px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+    border-right:1px solid #2d2f39;
+
+    z-index:999;
+}
+
+.sidebar h2{
+
+    color:#19c37d;
+
+    text-align:center;
+
+    margin-bottom:15px;
+
+    font-size:28px;
+}
+
+.sidebar button{
+
+    width:100%;
+
+    border:none;
+
+    background:#2d2f39;
+
+    color:white;
+
+    padding:16px;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    transition:0.3s;
+
+    font-size:16px;
+}
+
+.sidebar button:hover{
+
+    background:#19c37d;
+}
+
+/* =========================================
+   CONTENIDO
+========================================= */
+
+.content{
+
+    flex:1;
+
+    height:100dvh;
+
+    overflow:hidden;
+}
+
+.page{
+
+    display:none;
+
+    width:100%;
+
+    height:100dvh;
+
+    overflow-y:auto;
+
+    -webkit-overflow-scrolling:touch;
+}
+
+.page.active{
+
+    display:block;
+}
+
+/* =========================================
+   CHAT IA
+========================================= */
 
 .chat-container{
-    width:95%;
-    max-width:900px;
-    height:95vh;
+
+    width:100%;
+
+    height:100dvh;
+
     background:#444654;
-    border-radius:18px;
-    overflow:hidden;
+
     display:flex;
+
     flex-direction:column;
-    box-shadow:0 10px 40px rgba(0,0,0,0.5);
+
+    overflow:hidden;
 }
 
+/* HEADER */
+
 .header{
+
     background:#202123;
+
     padding:20px;
+
     text-align:center;
+
     border-bottom:1px solid #2d2f39;
 }
 
 .header h1{
+
     color:#19c37d;
+
     font-size:28px;
 }
 
 .header p{
+
     color:#aaa;
+
     margin-top:5px;
 }
 
+/* STATUS */
+
 .status{
+
     background:#2d2f39;
+
     padding:10px 20px;
+
     font-size:14px;
+
     color:#19c37d;
+
     border-bottom:1px solid #444;
 }
+
+/* CHAT BOX */
 
 .chat-box{
 
@@ -72,7 +197,7 @@ body{
 
     padding:25px;
 
-    padding-bottom:120px;
+    padding-bottom:130px;
 
     display:flex;
 
@@ -83,22 +208,36 @@ body{
     -webkit-overflow-scrolling:touch;
 }
 
+/* MENSAJES */
+
 .message{
+
     max-width:80%;
+
     padding:18px;
+
     border-radius:16px;
-    line-height:1.5;
+
+    line-height:1.6;
 }
 
 .user{
+
     align-self:flex-end;
+
     background:#19c37d;
 }
 
 .bot{
+
     align-self:flex-start;
+
     background:#2d2f39;
 }
+
+/* =========================================
+   INPUT CHAT
+========================================= */
 
 .input-area{
 
@@ -121,131 +260,79 @@ body{
     border-top:1px solid #555;
 }
 
+/* TEXTAREA */
+
 textarea{
+
     flex:1;
+
     resize:none;
+
     border:none;
+
     outline:none;
+
     background:#343541;
+
     color:white;
+
     padding:15px;
+
     border-radius:12px;
-    height:60px;
+
+    min-height:55px;
+
+    max-height:120px;
+
     font-size:16px;
+
+    appearance:none;
+
+    -webkit-appearance:none;
 }
+
+/* BOTONES */
 
 button{
+
+    border:none;
+
+    cursor:pointer;
+}
+
+.input-area button{
+
     width:70px;
-    border:none;
+
     border-radius:12px;
+
     background:#19c37d;
+
     color:white;
+
     font-size:22px;
-    cursor:pointer;
 }
 
-/* =======================================
-   LAYOUT GENERAL
-======================================= */
-
-.main-container{
-
-    display:flex;
-
-    width:100%;
-
-    height:100vh;
-}
-
-/* SIDEBAR */
-
-.sidebar{
-
-    width:260px;
-
-    background:#202123;
-
-    padding:30px 20px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:20px;
-
-    border-right:1px solid #333;
-}
-
-.sidebar h2{
-
-    color:#19c37d;
-
-    text-align:center;
-
-    margin-bottom:20px;
-}
-
-.sidebar button{
-
-    width:100%;
-
-    padding:16px;
-
-    border:none;
-
-    border-radius:12px;
-
-    background:#2d2f39;
-
-    color:white;
-
-    font-size:16px;
-
-    cursor:pointer;
-
-    transition:0.3s;
-}
-
-.sidebar button:hover{
-
-    background:#19c37d;
-}
-
-/* CONTENIDO */
-
-.content{
-
-    flex:1;
-
-    overflow:hidden;
-}
-
-.page{
-
-    display:none;
-
-    width:100%;
-
-    height:100%;
-}
-
-.page.active{
-
-    display:block;
-}
-
-/* TEST */
+/* =========================================
+   TEST
+========================================= */
 
 .test-container{
 
-    height:100vh;
+    width:100%;
+
+    height:100dvh;
 
     overflow-y:auto;
 
     padding:30px;
 
     background:#343541;
+
+    -webkit-overflow-scrolling:touch;
 }
+
+/* HEADER TEST */
 
 .test-header{
 
@@ -276,7 +363,7 @@ button{
     font-size:18px;
 }
 
-/* TARJETAS */
+/* PREGUNTAS */
 
 .question-card{
 
@@ -296,6 +383,8 @@ button{
     font-size:22px;
 }
 
+/* OPCIONES */
+
 .question-card label{
 
     display:block;
@@ -311,6 +400,8 @@ button{
     cursor:pointer;
 
     transition:0.3s;
+
+    line-height:1.5;
 }
 
 .question-card label:hover{
@@ -364,9 +455,10 @@ button{
 
     line-height:1.7;
 }
-/* ======================================
+
+/* =========================================
    RESPONSIVE TABLET
-====================================== */
+========================================= */
 
 @media(max-width:1000px){
 
@@ -403,296 +495,11 @@ button{
 
         font-size:15px;
     }
-
-    .content{
-
-        height:calc(100vh - 90px);
-    }
 }
 
-/* ======================================
-   RESPONSIVE CELULAR
-====================================== */
-
-@media(max-width:700px){
-
-    body{
-
-        overflow:hidden;
-    }
-
-    .chat-container{
-
-        width:100%;
-
-        height:100vh;
-
-        border-radius:0;
-    }
-
-    .header{
-
-        padding:18px;
-    }
-
-    .header h1{
-
-        font-size:24px;
-    }
-
-    .header p{
-
-        font-size:14px;
-    }
-
-    .status{
-
-        font-size:12px;
-
-        padding:10px;
-    }
-
-    .chat-box{
-
-        padding:15px;
-    }
-
-    .message{
-
-        max-width:100%;
-
-        font-size:14px;
-
-        padding:15px;
-    }
-
-    .input-area{
-
-        padding:12px;
-
-        gap:10px;
-    }
-
-    textarea{
-
-        height:55px;
-
-        font-size:14px;
-    }
-
-    button{
-
-        width:60px;
-
-        font-size:18px;
-    }
-
-    /* SIDEBAR */
-
-    .sidebar{
-
-        flex-direction:column;
-
-        width:100%;
-
-        padding:15px;
-    }
-
-    .sidebar button{
-
-        width:100%;
-    }
-
-    /* TEST */
-
-    .test-container{
-
-        padding:15px;
-    }
-
-    .test-header{
-
-        padding:20px;
-    }
-
-    .test-header h1{
-
-        font-size:28px;
-    }
-
-    .test-header p{
-
-        font-size:14px;
-    }
-
-    .question-card{
-
-        padding:18px;
-    }
-
-    .question-card h3{
-
-        font-size:18px;
-
-        line-height:1.5;
-    }
-
-    .question-card label{
-
-        font-size:14px;
-
-        padding:14px;
-    }
-
-    .result-btn{
-
-        font-size:16px;
-
-        padding:15px;
-    }
-
-    #resultado{
-
-        font-size:16px;
-
-        padding:20px;
-    }
-}
-
-/* ======================================
-   CELULARES PEQUEÑOS
-====================================== */
-
-@media(max-width:480px){
-
-    .header h1{
-
-        font-size:20px;
-    }
-
-    .message{
-
-        font-size:13px;
-    }
-
-    textarea{
-
-        font-size:13px;
-    }
-
-    .question-card h3{
-
-        font-size:16px;
-    }
-
-    .question-card label{
-
-        font-size:13px;
-    }
-}
-
-/* =====================================
-   FIX IOS + SAFARI
-===================================== */
-
-.main-container{
-
-    width:100%;
-
-    height:100dvh;
-
-    overflow:hidden;
-}
-
-.content{
-
-    flex:1;
-
-    height:100dvh;
-
-    overflow:hidden;
-}
-
-.page{
-
-    width:100%;
-
-    height:100dvh;
-
-    overflow-y:auto;
-
-    -webkit-overflow-scrolling:touch;
-}
-
-textarea{
-
-    appearance:none;
-
-    -webkit-appearance:none;
-
-    border-radius:12px;
-}
-/* CHAT */
-
-.chat-container{
-
-    width:100%;
-
-    height:100dvh;
-
-    display:flex;
-
-    flex-direction:column;
-}
-
-.chat-box{
-
-    flex:1;
-
-    overflow-y:auto;
-
-    -webkit-overflow-scrolling:touch;
-}
-
-/* TEST */
-
-.test-container{
-
-    width:100%;
-
-    height:100dvh;
-
-    overflow-y:auto;
-
-    -webkit-overflow-scrolling:touch;
-}
-
-/* INPUT IOS */
-
-textarea,
-input,
-button{
-
-    font-size:16px;
-}
-
-/* SAFARI FIX */
-
-input,
-textarea,
-button{
-
-    border-radius:0;
-}
-
-/* IPHONE MENU FIX */
-
-.sidebar{
-
-    z-index:999;
-}
-
-/* MOBILE */
+/* =========================================
+   RESPONSIVE MOVIL
+========================================= */
 
 @media(max-width:768px){
 
@@ -700,6 +507,8 @@ button{
 
         flex-direction:column;
     }
+
+    /* MENU */
 
     .sidebar{
 
@@ -734,40 +543,32 @@ button{
         padding:14px 10px;
     }
 
-    .content{
-
-        flex:1;
-
-        overflow:hidden;
-    }
+    /* CHAT */
 
     .chat-container{
 
-        border-radius:0;
+        height:100dvh;
     }
 
-    .test-container{
+    .chat-box{
+
+        padding:15px;
+
+        padding-bottom:150px;
+    }
+
+    .message{
+
+        max-width:100%;
+
+        font-size:14px;
 
         padding:15px;
     }
 
-    .question-card{
+    .header{
 
         padding:18px;
-    }
-
-    .question-card h3{
-
-        font-size:17px;
-
-        line-height:1.5;
-    }
-
-    .question-card label{
-
-        font-size:14px;
-
-        line-height:1.5;
     }
 
     .header h1{
@@ -775,16 +576,19 @@ button{
         font-size:22px;
     }
 
-    .test-header h1{
+    .header p{
 
-        font-size:24px;
+        font-size:14px;
     }
-}
-/* ====================================
-   MOBILE INPUT FIX
-==================================== */
 
-@media(max-width:768px){
+    .status{
+
+        font-size:12px;
+
+        padding:10px;
+    }
+
+    /* INPUT MOVIL */
 
     .input-area{
 
@@ -803,22 +607,102 @@ button{
         z-index:9999;
     }
 
-    .chat-box{
-
-        padding-bottom:140px;
-    }
-
     textarea{
 
         min-height:50px;
 
-        max-height:120px;
+        font-size:16px;
+    }
+
+    .input-area button{
+
+        width:60px;
+
+        font-size:18px;
+    }
+
+    /* TEST */
+
+    .test-container{
+
+        padding:15px;
+    }
+
+    .test-header{
+
+        padding:20px;
+    }
+
+    .test-header h1{
+
+        font-size:28px;
+    }
+
+    .test-header p{
+
+        font-size:14px;
+    }
+
+    .question-card{
+
+        padding:18px;
+    }
+
+    .question-card h3{
+
+        font-size:17px;
+
+        line-height:1.5;
+    }
+
+    .question-card label{
+
+        font-size:14px;
+    }
+
+    .result-btn{
+
+        font-size:16px;
+
+        padding:15px;
+    }
+
+    #resultado{
+
+        font-size:16px;
+
+        padding:20px;
+    }
+}
+
+/* =========================================
+   CELULARES PEQUEÑOS
+========================================= */
+
+@media(max-width:480px){
+
+    .header h1{
+
+        font-size:20px;
+    }
+
+    .message{
+
+        font-size:13px;
+    }
+
+    textarea{
+
+        font-size:13px;
+    }
+
+    .question-card h3{
 
         font-size:16px;
     }
 
-    .chat-container{
+    .question-card label{
 
-        height:100dvh;
+        font-size:13px;
     }
 }
