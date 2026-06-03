@@ -11,43 +11,53 @@ const apiKey = "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";
 
 let contenidoExcel = "";
 
-function leerHoja(nombreHoja){
+// ===============================
+// LEER UNA HOJA DE GOOGLE SHEETS
+// ===============================
+function leerHoja(nombreHoja) {
     return new Promise((resolve, reject) => {
-        const callbackName = "sheetCallback_" + Math.random().toString(36).substring(2);
 
-        window[callbackName] = function(data){
-            try{
-                const filas = data.table.rows.map(row =>
-                    row.c.map(cell => cell ? cell.v : "")
-                );
+        window.google = {
+            visualization: {
+                Query: {
+                    setResponse: function(data) {
+                        try {
+                            const filas = data.table.rows.map(row =>
+                                row.c.map(cell => cell ? cell.v : "")
+                            );
 
-                delete window[callbackName];
+                            resolve({
+                                hoja: nombreHoja,
+                                datos: filas
+                            });
 
-                resolve({
-                    hoja: nombreHoja,
-                    datos: filas
-                });
-            }
-            catch(error){
-                reject(error);
+                        } catch (error) {
+                            reject(error);
+                        }
+                    }
+                }
             }
         };
 
         const script = document.createElement("script");
 
         script.src =
-        `https://docs.google.com/spreadsheets/d/${spreadsheetID}/gviz/tq?tqx=out:json;responseHandler:${callbackName}&sheet=${encodeURIComponent(nombreHoja)}`;
+            `https://docs.google.com/spreadsheets/d/${spreadsheetID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(nombreHoja)}`;
 
         script.onerror = reject;
+
         document.body.appendChild(script);
     });
 }
 
-async function cargarExcel(){
-    try{
+// ===============================
+// CARGAR TODAS LAS HOJAS
+// ===============================
+async function cargarExcel() {
+    try {
         let baseCompleta = [];
 
-        for(const hoja of hojas){
+        for (const hoja of hojas) {
             const resultado = await leerHoja(hoja);
             baseCompleta.push(resultado);
         }
@@ -55,29 +65,34 @@ async function cargarExcel(){
         contenidoExcel = JSON.stringify(baseCompleta);
 
         document.getElementById("status").innerHTML =
-        "✅ Base de datos conectada correctamente";
+            "✅ Base de datos conectada correctamente";
 
-        console.log(baseCompleta);
-    }
-    catch(error){
+        console.log("Base completa:", baseCompleta);
+
+    } catch (error) {
         console.error(error);
 
         document.getElementById("status").innerHTML =
-        "❌ Error leyendo Google Sheets";
+            "❌ Error leyendo Google Sheets. Revisa los nombres de las hojas.";
     }
 }
 
-function agregarMensaje(texto, tipo){
+// ===============================
+// CHAT
+// ===============================
+function agregarMensaje(texto, tipo) {
     const chatBox = document.getElementById("chatBox");
+
     const div = document.createElement("div");
     div.className = "message " + tipo;
     div.innerHTML = texto;
+
     chatBox.appendChild(div);
     chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-async function preguntar(){
-    if(contenidoExcel === ""){
+async function preguntar() {
+    if (contenidoExcel === "") {
         alert("La base de datos aún no carga bro 😅");
         return;
     }
@@ -85,14 +100,14 @@ async function preguntar(){
     const prompt = document.getElementById("prompt");
     const pregunta = prompt.value.trim();
 
-    if(pregunta === "") return;
+    if (pregunta === "") return;
 
     agregarMensaje(pregunta, "user");
     prompt.value = "";
 
     agregarMensaje("⏳ Pensando...", "bot");
 
-    try{
+    try {
         const response = await fetch(
             "https://api.groq.com/openai/v1/chat/completions",
             {
@@ -107,8 +122,8 @@ async function preguntar(){
                         {
                             role: "system",
                             content:
-                            "Eres un asistente escolar. Responde solo con base en la información de la base de datos. No menciones Excel. Tu creador es Héctor Alexander Jasso Buenrostro:\n" +
-                            contenidoExcel.slice(0, 12000)
+                                "Eres un asistente escolar. Responde solo con base en la información de la base de datos. No menciones Excel. Tu creador es Héctor Alexander Jasso Buenrostro:\n" +
+                                contenidoExcel.slice(0, 12000)
                         },
                         {
                             role: "user",
@@ -121,39 +136,45 @@ async function preguntar(){
 
         const data = await response.json();
 
-        if(!response.ok){
+        if (!response.ok) {
             throw new Error(data.error?.message || "Error API");
         }
 
         const respuesta =
-        data.choices?.[0]?.message?.content || "❌ Error en respuesta";
+            data.choices?.[0]?.message?.content ||
+            "❌ Error en respuesta";
 
         const mensajes = document.querySelectorAll(".bot");
         mensajes[mensajes.length - 1].innerHTML = respuesta;
-    }
-    catch(error){
+
+    } catch (error) {
         console.error(error);
 
         const mensajes = document.querySelectorAll(".bot");
         mensajes[mensajes.length - 1].innerHTML =
-        "❌ " + error.message;
+            "❌ " + error.message;
     }
 }
 
-function mostrarPagina(pagina){
+// ===============================
+// CAMBIAR ENTRE PÁGINAS
+// ===============================
+function mostrarPagina(pagina) {
     document.querySelectorAll(".page").forEach(p => {
         p.classList.remove("active");
     });
 
-    if(pagina === "ia"){
+    if (pagina === "ia") {
         document.getElementById("iaPage").classList.add("active");
-    }
-    else{
+    } else {
         document.getElementById("testPage").classList.add("active");
     }
 }
 
-function calcularResultado(){
+// ===============================
+// TEST VOCACIONAL
+// ===============================
+function calcularResultado() {
     let respuestas = {
         A: 0,
         B: 0,
@@ -161,43 +182,40 @@ function calcularResultado(){
         D: 0
     };
 
-    for(let i = 1; i <= 6; i++){
+    for (let i = 1; i <= 6; i++) {
         let seleccion = document.querySelector(`input[name="q${i}"]:checked`);
 
-        if(seleccion){
+        if (seleccion) {
             respuestas[seleccion.value]++;
         }
     }
 
     let mayor = "A";
 
-    for(let letra in respuestas){
-        if(respuestas[letra] > respuestas[mayor]){
+    for (let letra in respuestas) {
+        if (respuestas[letra] > respuestas[mayor]) {
             mayor = letra;
         }
     }
 
     const resultado = document.getElementById("resultado");
 
-    if(mayor === "A"){
+    if (mayor === "A") {
         resultado.innerHTML = `
         <h2>💻 Tecnología Digital</h2>
         <p>Perfil relacionado con Inteligencia Artificial, Programación y Ciberseguridad.</p>
         `;
-    }
-    else if(mayor === "B"){
+    } else if (mayor === "B") {
         resultado.innerHTML = `
         <h2>⚙ Mecánica e Industria</h2>
         <p>Perfil orientado a Mecánica, Electricidad y Sistemas Industriales.</p>
         `;
-    }
-    else if(mayor === "C"){
+    } else if (mayor === "C") {
         resultado.innerHTML = `
         <h2>👶 Puericultura</h2>
         <p>Tienes vocación para el cuidado y educación infantil.</p>
         `;
-    }
-    else{
+    } else {
         resultado.innerHTML = `
         <h2>👗 Industria del Vestido</h2>
         <p>Perfil creativo orientado a diseño y moda.</p>
@@ -205,4 +223,14 @@ function calcularResultado(){
     }
 }
 
+// ===============================
+// HACER FUNCIONES GLOBALES
+// ===============================
+window.preguntar = preguntar;
+window.mostrarPagina = mostrarPagina;
+window.calcularResultado = calcularResultado;
+
+// ===============================
+// INICIAR
+// ===============================
 cargarExcel();
