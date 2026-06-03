@@ -11,9 +11,7 @@ const apiKey = "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";
 
 let contenidoExcel = "";
 
-// ===============================
-// LEER UNA HOJA DE GOOGLE SHEETS
-// ===============================
+
 function leerHoja(nombreHoja) {
     return new Promise((resolve, reject) => {
 
@@ -50,9 +48,7 @@ function leerHoja(nombreHoja) {
     });
 }
 
-// ===============================
-// CARGAR TODAS LAS HOJAS
-// ===============================
+
 async function cargarExcel() {
     try {
         let baseCompleta = [];
@@ -77,9 +73,7 @@ async function cargarExcel() {
     }
 }
 
-// ===============================
-// CHAT
-// ===============================
+
 function agregarMensaje(texto, tipo) {
     const chatBox = document.getElementById("chatBox");
 
@@ -156,9 +150,7 @@ async function preguntar() {
     }
 }
 
-// ===============================
-// CAMBIAR ENTRE PÁGINAS
-// ===============================
+
 function mostrarPagina(pagina) {
     document.querySelectorAll(".page").forEach(p => {
         p.classList.remove("active");
@@ -171,9 +163,7 @@ function mostrarPagina(pagina) {
     }
 }
 
-// ===============================
-// TEST VOCACIONAL
-// ===============================
+
 function calcularResultado() {
     let respuestas = {
         A: 0,
@@ -223,14 +213,10 @@ function calcularResultado() {
     }
 }
 
-// ===============================
-// HACER FUNCIONES GLOBALES
-// ===============================
+
 window.preguntar = preguntar;
 window.mostrarPagina = mostrarPagina;
 window.calcularResultado = calcularResultado;
 
-// ===============================
-// INICIAR
-// ===============================
+
 cargarExcel();
