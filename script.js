@@ -1,12 +1,13 @@
 const spreadsheetID = "12lsuCTdXyhZ0Ew9ram9QBdOg_nvVOPQ9t0UPQFNZt1E";
 
 const hojas = [
-    "Tramites"
-    
+    "Tramites",
+    "Talleres",
+    "Directivos"
     
 ];
 
-const apiKey = "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";
+const apiKey = "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";
 
 let contenidoExcel = "";
 
