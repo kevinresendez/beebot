@@ -58,10 +58,14 @@ async function cargarExcel() {
             baseCompleta.push(resultado);
         }
 
-        contenidoExcel = JSON.stringify(baseCompleta);
+     contenidoExcel = JSON.stringify(baseCompleta);
 
-        document.getElementById("status").innerHTML =
-            "✅ Base de datos conectada correctamente";
+console.log("Base completa:", baseCompleta);
+console.log("Cantidad de hojas:", baseCompleta.length);
+console.log("Caracteres totales:", contenidoExcel.length);
+
+document.getElementById("status").innerHTML =
+    "✅ Base de datos conectada correctamente";
 
         console.log("Base completa:", baseCompleta);
 
