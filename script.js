@@ -1,7 +1,9 @@
 const spreadsheetID = "12lsuCTdXyhZ0Ew9ram9QBdOg_nvVOPQ9t0UPQFNZt1E";
 
 const hojas = [
-    "Tramites"
+    "Tramites",
+    "Talleres",
+    "Directivos"
     
 ];
 
