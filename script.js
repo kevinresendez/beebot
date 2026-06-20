@@ -7,7 +7,7 @@ const hojas = [
     
 ];
 
-const apiKey = "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".trim();
+const workerUrl = "https://beebot-worker.resenvalen-api-beebot.workers.dev";
 
 let contenidoExcel = "";
 
@@ -65,7 +65,7 @@ console.log("Cantidad de hojas:", baseCompleta.length);
 console.log("Caracteres totales:", contenidoExcel.length);
 
 document.getElementById("status").innerHTML =
-    "✅ Base de datos conectada correctamente";
+    "âœ… Base de datos conectada correctamente";
 
         console.log("Base completa:", baseCompleta);
 
@@ -73,7 +73,7 @@ document.getElementById("status").innerHTML =
         console.error(error);
 
         document.getElementById("status").innerHTML =
-            "❌ Error leyendo Google Sheets. Revisa los nombres de las hojas.";
+            "âŒ Error leyendo Google Sheets. Revisa los nombres de las hojas.";
     }
 }
 
@@ -91,7 +91,7 @@ function agregarMensaje(texto, tipo) {
 
 async function preguntar() {
     if (contenidoExcel === "") {
-        alert("La base de datos aún no carga bro 😅");
+        alert("La base de datos aÃºn no carga bro ðŸ˜…");
         return;
     }
 
@@ -103,31 +103,19 @@ async function preguntar() {
     agregarMensaje(pregunta, "user");
     prompt.value = "";
 
-    agregarMensaje("⏳ Pensando...", "bot");
+    agregarMensaje("â³ Pensando...", "bot");
 
     try {
         const response = await fetch(
-            "https://api.groq.com/openai/v1/chat/completions",
+            workerUrl,
             {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${apiKey}`
+                    "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    model: "llama-3.1-8b-instant",
-                    messages: [
-                        {
-                            role: "system",
-                            content:
-                                "Eres un asistente escolar. Responde solo con base en la información de la base de datos. No menciones Excel. Tu creador es Héctor Alexander Jasso Buenrostro:\n" +
-                                contenidoExcel.slice(0, 12000)
-                        },
-                        {
-                            role: "user",
-                            content: pregunta
-                        }
-                    ]
+                    pregunta,
+                    contexto: contenidoExcel
                 })
             }
         );
@@ -135,12 +123,12 @@ async function preguntar() {
         const data = await response.json();
 
         if (!response.ok) {
-            throw new Error(data.error?.message || "Error API");
+            throw new Error(data.error || "Error API");
         }
 
         const respuesta =
-            data.choices?.[0]?.message?.content ||
-            "❌ Error en respuesta";
+            data.respuesta ||
+            "âŒ Error en respuesta";
 
         const mensajes = document.querySelectorAll(".bot");
         mensajes[mensajes.length - 1].innerHTML = respuesta;
@@ -150,7 +138,7 @@ async function preguntar() {
 
         const mensajes = document.querySelectorAll(".bot");
         mensajes[mensajes.length - 1].innerHTML =
-            "❌ " + error.message;
+            "âŒ " + error.message;
     }
 }
 
@@ -196,23 +184,23 @@ function calcularResultado() {
 
     if (mayor === "A") {
         resultado.innerHTML = `
-        <h2>💻 Tecnología Digital</h2>
-        <p>Perfil relacionado con Inteligencia Artificial, Programación y Ciberseguridad.</p>
+        <h2>ðŸ’» TecnologÃ­a Digital</h2>
+        <p>Perfil relacionado con Inteligencia Artificial, ProgramaciÃ³n y Ciberseguridad.</p>
         `;
     } else if (mayor === "B") {
         resultado.innerHTML = `
-        <h2>⚙ Mecánica e Industria</h2>
-        <p>Perfil orientado a Mecánica, Electricidad y Sistemas Industriales.</p>
+        <h2>âš™ MecÃ¡nica e Industria</h2>
+        <p>Perfil orientado a MecÃ¡nica, Electricidad y Sistemas Industriales.</p>
         `;
     } else if (mayor === "C") {
         resultado.innerHTML = `
-        <h2>👶 Puericultura</h2>
-        <p>Tienes vocación para el cuidado y educación infantil.</p>
+        <h2>ðŸ‘¶ Puericultura</h2>
+        <p>Tienes vocaciÃ³n para el cuidado y educaciÃ³n infantil.</p>
         `;
     } else {
         resultado.innerHTML = `
-        <h2>👗 Industria del Vestido</h2>
-        <p>Perfil creativo orientado a diseño y moda.</p>
+        <h2>ðŸ‘— Industria del Vestido</h2>
+        <p>Perfil creativo orientado a diseÃ±o y moda.</p>
         `;
     }
 }
